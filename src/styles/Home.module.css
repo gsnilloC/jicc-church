@@ -1,0 +1,469 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .home {
+    padding: 1.5rem 0.5rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+.heroSection {
+  width: 100%;
+  min-height: 540px;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+  opacity: 0.4;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 14rem;
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+.heroTitle {
+  color: orange;
+  font-size: 3.3rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.heroButton {
+  background: #e4040c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.heroButton:hover {
+  background: #b71c2a;
+}
+
+.subtitle {
+  display: none;
+}
+
+.heroRow,
+.crossImg {
+  display: none;
+}
+
+.serviceTimes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.serviceTimeContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.serviceTimeItem {
+  background-color: #f7fafc;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 2rem 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+}
+
+.serviceTimeTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: -1rem;
+  margin: 0.5rem;
+}
+
+.service {
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 0.3rem;
+}
+
+.serviceTimeText {
+  font-size: 1.1rem;
+  color: #374151;
+  text-align: center;
+  margin: 0;
+}
+
+.testimonialsSection {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonialsTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.testimonialCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  touch-action: pan-y;
+}
+
+.carouselButton {
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: #0a3a47;
+  cursor: pointer;
+  padding: 0 1rem;
+  transition: color 0.2s;
+}
+.carouselButton:hover {
+  color: #e4040c;
+}
+
+.testimonialContent {
+  max-width: 1100px;
+  min-width: 320px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonialText {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #17505a;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.testimonialAuthor {
+  font-size: 1.1rem;
+  color: #222;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.testimonialDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.testimonialDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cfd8dc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.testimonialDot.active {
+  background: #17505a;
+  transform: scale(1.2, 1.2);
+}
+
+@media (max-width: 900px) {
+  .heroSection {
+    min-height: 320px;
+  }
+  .heroOverlay {
+    padding: 4rem 2rem 2rem 2rem;
+  }
+  .heroTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .heroButton {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+  .serviceTimes {
+    padding: 1.2rem;
+    margin-top: 1rem;
+  }
+  .serviceTimeContainer {
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  .serviceTimeItem {
+    min-width: 220px;
+    max-width: 95vw;
+    padding: 1.2rem 1rem;
+  }
+  .testimonialsSection {
+    padding: 1.2rem;
+  }
+  .testimonialText {
+    font-size: 1.1rem;
+  }
+  .testimonialContent {
+    max-width: 98vw;
+    min-width: 180px;
+  }
+  .eventsSection {
+    padding: 1.2rem;
+  }
+  .eventsList {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  .eventCard {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+  .eventsButton {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    height: 40vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .heroOverlay {
+    top: 40%;
+    left: 0;
+    width: 100vw;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.5rem;
+    margin-top: 0;
+    transform: translateY(-30%);
+    z-index: 2;
+  }
+  .heroTitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    color: orange;
+    padding: 0.3rem 0.2rem;
+    border-radius: 6px;
+    display: inline-block;
+    max-width: 95vw;
+  }
+  .heroButton {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+    width: 100%;
+    max-width: 320px;
+    margin: 2.2rem auto 0 auto;
+    display: block;
+  }
+  .serviceTimes {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .serviceTimeContainer {
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+  }
+  .serviceTimeItem {
+    min-width: 90vw;
+    max-width: 98vw;
+    padding: 0.7rem 0.5rem;
+  }
+  .serviceTimeTitle {
+    font-size: 0.95rem;
+    margin: 0.2rem;
+  }
+  .testimonialsSection {
+    padding: 0.5rem;
+  }
+  .testimonialText {
+    font-size: 0.95rem;
+  }
+  .testimonialContent {
+    max-width: 99vw;
+    min-width: 120px;
+    margin-bottom: 1.2rem;
+    padding: 0 0.2rem;
+  }
+  .testimonialDots {
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .testimonialDot {
+    width: 18px;
+    height: 18px;
+  }
+  .eventsSection {
+    padding: 0.5rem;
+  }
+  .eventsList {
+    padding: 0.2rem;
+    gap: 0.8rem;
+  }
+  .eventCard {
+    padding: 0.5rem;
+    max-width: 99vw;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .eventsButton {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.7rem;
+  }
+}
+
+.eventsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.eventsTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+  align-items: center;
+  padding: 2rem;
+}
+
+.eventCard {
+  background: #f7fafd;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+.eventTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.eventMeta {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: left;
+}
+
+.eventDescription {
+  font-size: 1.05rem;
+  color: #374151;
+}
+
+.eventsButton {
+  margin-top: 2.5rem;
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.eventsButton:hover {
+  background: #e65c00;
+}

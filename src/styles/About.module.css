@@ -1,0 +1,437 @@
+.aboutPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffff;
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 1.5rem 0.5rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .text {
+    font-size: 1rem;
+  }
+}
+
+.heroTitle {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-top: 4rem;
+}
+
+.heroTitle h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: row;
+  background: #ef542e;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 300px;
+  padding: 6rem;
+}
+
+.heroTitleBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-left: 3rem;
+  margin-top: 5rem;
+}
+
+.heroAboutUs {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.heroQuote {
+  text-align: left;
+}
+
+.heroImage {
+  margin-top: 17rem;
+  max-width: 750px;
+  z-index: 2;
+}
+
+.heroQuote {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.heroScripture {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 1.2rem;
+  color: #fff;
+  text-align: right;
+}
+
+.churchHistoryContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rem;
+}
+
+.churchHistorySection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.churchHistoryText {
+  max-width: 450px;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.churchHistoryText h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+
+.staffSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.staffCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 1.2rem 1.5rem;
+  gap: 1.5rem;
+  min-width: 270px;
+  max-width: 500px;
+}
+
+.staffImage {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.staffInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.staffName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.staffTitleLead {
+  font-size: 1rem;
+  color: #e65c00;
+  font-weight: 700;
+}
+
+.staffTitleAssociate {
+  font-size: 1rem;
+  color: #e4040c;
+  font-weight: 700;
+}
+
+.staffTitleWorship {
+  font-size: 1rem;
+  color: #e6a800;
+  font-weight: 700;
+}
+
+.staffDescription {
+  font-size: 1rem;
+  color: #374151;
+  margin-top: 0.2rem;
+}
+
+.coreBeliefsSection {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem;
+}
+
+.coreBeliefsTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0.5rem;
+}
+
+.coreBeliefsSubtitle {
+  font-size: 1.5rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.coreBeliefsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem 2.2rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.coreBeliefCard {
+  background-color: #f7fafc;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 2rem 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  transition: box-shadow 0.2s;
+}
+
+.coreBeliefTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.7rem;
+  color: #111827;
+}
+
+.coreBeliefText {
+  font-size: 1.15rem;
+  color: #374151;
+}
+
+@media (max-width: 1100px) {
+  .heroOverlay {
+    padding-left: 12vw;
+    padding-right: 1.5rem;
+  }
+  .heroImage {
+    width: 50vw;
+    min-width: 220px;
+    margin-left: 1rem;
+  }
+  .heroRight {
+    max-width: 50vw;
+  }
+  .churchHistorySection,
+  .coreBeliefsSection {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroSection {
+    min-height: 220px;
+  }
+  .heroOverlay {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem 0.5rem 0 0.5rem;
+  }
+  .heroLeft {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .heroLogo {
+    height: 4rem;
+    margin-right: 0.7rem;
+  }
+  .heroTitle {
+    font-size: 1.1rem;
+  }
+  .heroRight {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    max-width: 100vw;
+  }
+  .heroQuote {
+    font-size: 1rem;
+  }
+  .heroScripture {
+    font-size: 1.1rem;
+    margin-top: 0.7rem;
+  }
+  .churchHistorySection {
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  .staffSection {
+    flex: unset;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .staffCard {
+    min-width: 220px;
+    max-width: 98vw;
+    padding: 0.7rem 1rem;
+    gap: 1rem;
+  }
+  .staffImage {
+    width: 60px;
+    height: 60px;
+  }
+  .staffName {
+    font-size: 1rem;
+  }
+  .staffDescription {
+    font-size: 0.95rem;
+  }
+  .coreBeliefsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .coreBeliefCard {
+    padding: 1.2rem 1rem;
+  }
+  .coreBeliefsTitle {
+    font-size: 2rem;
+  }
+  .coreBeliefsSubtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    min-height: 120px;
+  }
+  .heroImage {
+    width: 100vw;
+    min-width: 0;
+    margin: 0;
+    border-radius: 0 0 8px 0;
+  }
+  .heroOverlay {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0.2rem 0 0.2rem;
+  }
+  .heroLeft {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .heroLogo {
+    height: 2.2rem;
+    margin-right: 0.3rem;
+  }
+  .heroTitle {
+    font-size: 0.7rem;
+  }
+  .heroRight {
+    margin-left: 0;
+    margin-top: 0.2rem;
+    max-width: 100vw;
+  }
+  .heroAboutUs {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+  .heroQuote {
+    font-size: 0.7rem;
+  }
+  .heroScripture {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+  .churchHistorySection {
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.7rem;
+    padding: 0 0.2rem;
+  }
+  .churchHistoryText h2 {
+    font-size: 1rem;
+  }
+  .coreBeliefsSection {
+    margin-top: 1rem;
+    padding: 0 0.2rem 1rem 0.2rem;
+  }
+  .coreBeliefsTitle {
+    font-size: 1.1rem;
+  }
+  .coreBeliefsSubtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .coreBeliefsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+  .coreBeliefCard {
+    padding: 0.7rem 0.5rem;
+  }
+  .coreBeliefTitle {
+    font-size: 0.9rem;
+  }
+  .coreBeliefText {
+    font-size: 0.8rem;
+  }
+  .staffSection {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .staffCard {
+    min-width: 0;
+    max-width: 99vw;
+    padding: 0.5rem 0.5rem;
+    gap: 0.5rem;
+  }
+  .staffImage {
+    width: 40px;
+    height: 40px;
+  }
+  .staffName {
+    font-size: 0.9rem;
+  }
+  .staffDescription {
+    font-size: 0.8rem;
+  }
+}

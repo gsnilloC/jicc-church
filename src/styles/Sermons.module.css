@@ -1,0 +1,106 @@
+.ministries {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1.1rem;
+}
+
+.heroTitle {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-top: 4rem;
+}
+
+.heroTitle h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: row;
+  background: #ef542e;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 300px;
+  padding: 6rem;
+  width: 100%;
+}
+
+.heroTitleBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-left: 3rem;
+  margin-top: 5rem;
+}
+
+.heroAboutUs {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.heroQuote {
+  text-align: left;
+}
+
+.heroImage {
+  margin-top: 20rem;
+  margin-left: 14rem;
+  max-width: 560px;
+  z-index: 2;
+}
+
+.heroQuote {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.youtubeButton {
+  background: #e4040c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background 0.2s;
+}
+
+.youtubeButton:hover {
+  background: #b71c2a;
+}
+
+@media (max-width: 600px) {
+  .ministries {
+    padding: 1.5rem 0.5rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .text {
+    font-size: 1rem;
+  }
+}
