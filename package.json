@@ -29,8 +29,7 @@
     "server": "node backend/server.js"
   },
   "engines": {
-    "node": "20.x",
-    "npm": "10.x"
+    "node": "20.x"
   },
   "eslintConfig": {
     "extends": [
