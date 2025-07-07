@@ -31,9 +31,6 @@
     "eject": "react-scripts eject",
     "server": "node backend/server.js"
   },
-  "engines": {
-    "node": "20.x"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
