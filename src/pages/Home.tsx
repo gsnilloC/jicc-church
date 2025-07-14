@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Home.module.css";
+import eventStyles from "../styles/Events.module.css";
 import crossImg from "../assets/images/cross.jpg";
 
 const serviceTimes = [
@@ -28,21 +29,15 @@ const testimonials = [
   },
 ];
 
-// Add placeholder events data
-const events = [
-  {
-    title: "Testing",
-    date: "2025-05-22",
-    time: "10:00",
-    description: "TEST TEST",
-  },
-  {
-    title: "Test Event",
-    date: "2025-05-23",
-    time: "10:00 AM",
-    description: "This is a test event.",
-  },
-];
+interface EventData {
+  id?: number;
+  title: string;
+  date: string;
+  time?: string;
+  description: string;
+  image_url?: string;
+  [key: string]: any;
+}
 
 function useIsMobile(breakpoint = 600) {
   const [isMobile, setIsMobile] = useState(
@@ -56,10 +51,58 @@ function useIsMobile(breakpoint = 600) {
   return isMobile;
 }
 
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+function formatTime(timeStr: string) {
+  if (!timeStr) return "";
+  // Try to parse as HH:mm or HH:mm:ss
+  const [h, m = "00"] = timeStr.split(":");
+  let hour = parseInt(h, 10);
+  const minute = parseInt(m, 10);
+  if (isNaN(hour)) return timeStr;
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12;
+  if (hour === 0) hour = 12;
+  return `${hour}:${minute.toString().padStart(2, "0")} ${ampm}`;
+}
+
 const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
   navigate,
 }) => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [events, setEvents] = useState<EventData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/getEvents")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.events) {
+          setEvents(
+            data.events.map((event: any) => ({
+              ...event,
+              time: event.time || "",
+            }))
+          );
+        } else {
+          setError("No events found");
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to load events");
+        setLoading(false);
+      });
+  }, []);
+
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () =>
       setCurrentTestimonial((prev) =>
@@ -74,7 +117,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
   return (
     <div
       style={{
-        width: "100vw",
+        width: "100%",
         background: "#fff",
         overflowX: "hidden",
         margin: 0,
@@ -84,7 +127,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
       {/* Hero Section with overlay */}
       <div
         style={{
-          width: "100vw",
+          width: "100%",
           position: "relative",
           display: "flex",
           alignItems: "flex-end",
@@ -95,7 +138,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
           src={crossImg}
           alt="Cross Hero"
           style={{
-            width: "100vw",
+            width: "100%",
             minHeight: 320,
             objectFit: "cover",
             display: "block",
@@ -121,7 +164,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
             position: "absolute",
             bottom: 24,
             left: 0,
-            width: "100vw",
+            width: "100%",
             zIndex: 2,
             display: "flex",
             flexDirection: "column",
@@ -165,7 +208,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
         </div>
       </div>
       {/* Service Times */}
-      <div style={{ padding: "2rem 0.5rem 0.5rem 0.5rem", width: "100vw" }}>
+      <div style={{ padding: "2rem 0.5rem 0.5rem 0.5rem", width: "100%" }}>
         <h2
           style={{
             fontSize: "1.1rem",
@@ -222,7 +265,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
         </div>
       </div>
       {/* Testimonials */}
-      <div style={{ padding: "2rem 0.5rem 2rem 0.5rem", width: "100vw" }}>
+      <div style={{ padding: "2rem 0.5rem 2rem 0.5rem", width: "100%" }}>
         <h2
           style={{
             fontSize: "1.1rem",
@@ -304,7 +347,7 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
         </div>
       </div>
       {/* Events */}
-      <div style={{ padding: "1rem 0.5rem 2rem 0.5rem", width: "100vw" }}>
+      <div style={{ padding: "1rem 0.5rem 2rem 0.5rem", width: "100%" }}>
         <h2
           style={{
             fontSize: "1.1rem",
@@ -321,44 +364,94 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 10,
+            gap: 16,
             alignItems: "center",
+            justifyContent: "center",
             width: "100%",
+            maxWidth: 420,
+            margin: "0 auto",
           }}
         >
-          {events.map((event, idx) => (
-            <div
-              key={idx}
-              style={{
-                background: "#f7fafd",
-                borderRadius: 8,
-                border: "1px solid #e0e0e0",
-                padding: "1rem ",
-                marginBottom: 8,
-                textAlign: "left",
-                width: "70%",
-              }}
-            >
-              <div
-                style={{ fontWeight: 700, fontSize: ".8rem", marginBottom: 2 }}
-              >
-                {event.title}
-              </div>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: "#6b7280",
-                  marginBottom: 4,
-                }}
-              >
-                <span>Date: {event.date}</span> <br />
-                <span>Time: {event.time}</span>
-              </div>
-              <div style={{ fontSize: "0.8rem", color: "#374151" }}>
-                {event.description}
-              </div>
-            </div>
-          ))}
+          {loading ? (
+            <div>Loading events...</div>
+          ) : error ? (
+            <div style={{ color: "red" }}>{error}</div>
+          ) : events.length === 0 ? (
+            <div>No upcoming events.</div>
+          ) : (
+            events
+              .slice()
+              .sort(
+                (a, b) =>
+                  new Date(a.date).getTime() - new Date(b.date).getTime()
+              )
+              .slice(0, 3)
+              .map((event, idx) => (
+                <div
+                  key={event.id || idx}
+                  style={{
+                    background: "#f7fafc",
+                    borderRadius: 8,
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                    padding: "0.7rem 0.7rem",
+                    marginBottom: 8,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 8,
+                    width: "100%",
+                    maxWidth: 380,
+                  }}
+                >
+                  <img
+                    src={
+                      event.image_url || require("../assets/images/events.jpg")
+                    }
+                    alt={event.title}
+                    style={{
+                      width: "100%",
+                      height: 120,
+                      objectFit: "cover",
+                      borderRadius: 8,
+                      marginBottom: 6,
+                    }}
+                  />
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      fontSize: "1rem",
+                      color: "#111827",
+                    }}
+                  >
+                    {event.title}
+                  </div>
+                  <div style={{ fontSize: "0.9rem", color: "#374151" }}>
+                    {event.description}
+                  </div>
+                  <div style={{ fontSize: "0.85rem", color: "#ef542e" }}>
+                    Date: {formatDate(event.date)}
+                    {event.time ? ` | Time: ${formatTime(event.time)}` : ""}
+                  </div>
+                  <a
+                    href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+                      event.title
+                    )}&dates=${event.date.replace(
+                      /-/g,
+                      ""
+                    )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#e4040c",
+                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      marginTop: 4,
+                    }}
+                  >
+                    Add to Google Calendar
+                  </a>
+                </div>
+              ))
+          )}
           <button
             style={{
               marginTop: 18,
@@ -371,6 +464,8 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
               fontWeight: 600,
               cursor: "pointer",
               width: "fit-content",
+              alignSelf: "center",
+              boxShadow: "0 1px 4px rgba(0,0,0,0.07)",
             }}
             onClick={() => navigate("/events")}
           >
@@ -386,6 +481,33 @@ const Home: React.FC = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [events, setEvents] = useState<EventData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/getEvents")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.events) {
+          setEvents(
+            data.events.map((event: any) => ({
+              ...event,
+              time: event.time || "",
+            }))
+          );
+        } else {
+          setError("No events found");
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to load events");
+        setLoading(false);
+      });
+  }, []);
+
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () =>
       setCurrentTestimonial((prev) =>
@@ -463,16 +585,42 @@ const Home: React.FC = () => {
       <div className={styles.eventsSection}>
         <h2 className={styles.serviceTimeTitle}>Upcoming Events</h2>
         <div className={styles.eventsList}>
-          {events.map((event, idx) => (
-            <div className={styles.eventCard} key={idx}>
-              <div className={styles.eventTitle}>{event.title}</div>
-              <div className={styles.eventMeta}>
-                <span>Date: {event.date}</span>
-                <span>Time: {event.time}</span>
-              </div>
-              <div className={styles.eventDescription}>{event.description}</div>
-            </div>
-          ))}
+          {loading ? (
+            <div>Loading events...</div>
+          ) : error ? (
+            <div style={{ color: "red" }}>{error}</div>
+          ) : events.length === 0 ? (
+            <div>No upcoming events.</div>
+          ) : (
+            events
+              .slice()
+              .sort(
+                (a, b) =>
+                  new Date(a.date).getTime() - new Date(b.date).getTime()
+              )
+              .slice(0, 3)
+              .map((event, idx) => (
+                <div className={eventStyles.eventCard} key={event.id || idx}>
+                  <div className={eventStyles.eventImageBlock}>
+                    <img
+                      src={event.image_url}
+                      alt={event.title}
+                      className={eventStyles.eventImage}
+                    />
+                  </div>
+                  <div className={eventStyles.eventDetails}>
+                    <h3 className={eventStyles.eventTitle}>{event.title}</h3>
+                    <p className={eventStyles.eventDescription}>
+                      {event.description}
+                    </p>
+                    <small className={eventStyles.eventMeta}>
+                      Date: {formatDate(event.date)}
+                      {event.time ? ` | Time: ${formatTime(event.time)}` : ""}
+                    </small>
+                  </div>
+                </div>
+              ))
+          )}
         </div>
         <button
           className={styles.eventsButton}

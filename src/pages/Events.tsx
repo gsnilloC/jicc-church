@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Events.module.css";
 import eventsImg from "../assets/images/events.jpg";
 
@@ -11,36 +11,8 @@ interface EventData {
   time: string;
   description: string;
   image?: string;
+  image_url?: string;
 }
-
-const initialEvents: EventData[] = [
-  {
-    id: 1,
-    title: "Sunday Service",
-    date: "2025-06-29",
-    time: "10:00 AM",
-    description:
-      "Join us for our regular Sunday service with worship and teaching.",
-    image: defaultEventImg,
-  },
-  {
-    id: 2,
-    title: "Community Potluck",
-    date: "2025-07-02",
-    time: "06:00 PM",
-    description:
-      "Bring a dish and share an evening of fellowship with the church family.",
-    image: defaultEventImg,
-  },
-  {
-    id: 3,
-    title: "Youth Meeting",
-    date: "2025-07-05",
-    time: "04:00 PM",
-    description: "Youth group gathering with games and Bible study.",
-    image: defaultEventImg,
-  },
-];
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState(
@@ -56,12 +28,54 @@ function useIsMobile() {
   return isMobile;
 }
 
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+function formatTime(timeStr: string) {
+  if (!timeStr) return "";
+  const [h, m = "00"] = timeStr.split(":");
+  let hour = parseInt(h, 10);
+  const minute = parseInt(m, 10);
+  if (isNaN(hour)) return timeStr;
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12;
+  if (hour === 0) hour = 12;
+  return `${hour}:${minute.toString().padStart(2, "0")} ${ampm}`;
+}
+
 const Events: React.FC = () => {
-  const [events, setEvents] = useState<EventData[]>(initialEvents);
+  const [events, setEvents] = useState<EventData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
-  const handleDelete = (id: number) => {
-    setEvents((prev) => prev.filter((event) => event.id !== id));
-  };
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/getEvents")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.events) {
+          setEvents(
+            data.events.map((event: any) => ({
+              ...event,
+              time: event.time || "",
+            }))
+          );
+        } else {
+          setError("No events found");
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to load events");
+        setLoading(false);
+      });
+  }, []);
 
   if (isMobile) {
     return (
@@ -132,83 +146,75 @@ const Events: React.FC = () => {
             Upcoming Events
           </h3>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {events.map((event) => (
-              <div
-                key={event.id}
-                style={{
-                  background: "#f7fafc",
-                  borderRadius: 8,
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                  padding: "0.7rem 0.7rem",
-                  marginBottom: 8,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 8,
-                }}
-              >
-                <img
-                  src={event.image || defaultEventImg}
-                  alt={event.title}
-                  style={{
-                    width: "100%",
-                    height: 120,
-                    objectFit: "cover",
-                    borderRadius: 8,
-                    marginBottom: 6,
-                  }}
-                />
+            {loading ? (
+              <div>Loading events...</div>
+            ) : error ? (
+              <div style={{ color: "red" }}>{error}</div>
+            ) : events.length === 0 ? (
+              <div>No upcoming events.</div>
+            ) : (
+              events.map((event) => (
                 <div
+                  key={event.id}
                   style={{
-                    fontWeight: 700,
-                    fontSize: "1rem",
-                    color: "#111827",
+                    background: "#f7fafc",
+                    borderRadius: 8,
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                    padding: "0.7rem 0.7rem",
+                    marginBottom: 8,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 8,
                   }}
                 >
-                  {event.title}
+                  <img
+                    src={event.image_url || event.image || defaultEventImg}
+                    alt={event.title}
+                    style={{
+                      width: "100%",
+                      height: 120,
+                      objectFit: "cover",
+                      borderRadius: 8,
+                      marginBottom: 6,
+                    }}
+                  />
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      fontSize: "1rem",
+                      color: "#111827",
+                    }}
+                  >
+                    {event.title}
+                  </div>
+                  <div style={{ fontSize: "0.9rem", color: "#374151" }}>
+                    {event.description}
+                  </div>
+                  <div style={{ fontSize: "0.85rem", color: "#ef542e" }}>
+                    Date: {formatDate(event.date)}
+                    {event.time ? ` | Time: ${formatTime(event.time)}` : ""}
+                  </div>
+                  <a
+                    href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+                      event.title
+                    )}&dates=${event.date.replace(
+                      /-/g,
+                      ""
+                    )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#e4040c",
+                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      marginTop: 4,
+                    }}
+                  >
+                    Add to Google Calendar
+                  </a>
                 </div>
-                <div style={{ fontSize: "0.9rem", color: "#374151" }}>
-                  {event.description}
-                </div>
-                <div style={{ fontSize: "0.85rem", color: "#ef542e" }}>
-                  Date: {event.date} | Time: {event.time}
-                </div>
-                <a
-                  href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                    event.title
-                  )}&dates=${event.date.replace(
-                    /-/g,
-                    ""
-                  )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "#e4040c",
-                    fontWeight: 600,
-                    fontSize: "0.9rem",
-                    marginTop: 4,
-                  }}
-                >
-                  Add to Google Calendar
-                </a>
-                <button
-                  style={{
-                    background: "#e4040c",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: 6,
-                    padding: "0.5rem 1rem",
-                    fontSize: "0.95rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    marginTop: 4,
-                    alignSelf: "flex-start",
-                  }}
-                  onClick={() => handleDelete(event.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -236,43 +242,46 @@ const Events: React.FC = () => {
 
       {/* 🎟️ Event tiles section */}
       <section className={styles.eventsGrid}>
-        {events.map((event) => (
-          <div key={event.id} className={styles.eventCardRow}>
-            <div className={styles.eventCardImageBlock}>
-              <img
-                src={event.image || defaultEventImg}
-                alt="Event"
-                className={styles.eventCardImage}
-              />
+        {loading ? (
+          <div>Loading events...</div>
+        ) : error ? (
+          <div style={{ color: "red" }}>{error}</div>
+        ) : events.length === 0 ? (
+          <div>No upcoming events.</div>
+        ) : (
+          events.map((event) => (
+            <div key={event.id} className={styles.eventCardRow}>
+              <div className={styles.eventCardImageBlock}>
+                <img
+                  src={event.image_url || event.image || defaultEventImg}
+                  alt="Event"
+                  className={styles.eventCardImage}
+                />
+              </div>
+              <div className={styles.eventCardDetails}>
+                <p className={styles.title}>{event.title}</p>
+                <p className={styles.description}>{event.description}</p>
+                <p className={styles.eventDateTime}>
+                  Date: {formatDate(event.date)}
+                  {event.time ? ` | Time: ${formatTime(event.time)}` : ""}
+                </p>
+                <a
+                  href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+                    event.title
+                  )}&dates=${event.date.replace(
+                    /-/g,
+                    ""
+                  )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.addToCalendarLink}
+                >
+                  Add to Google Calendar
+                </a>
+              </div>
             </div>
-            <div className={styles.eventCardDetails}>
-              <p className={styles.title}>{event.title}</p>
-              <p className={styles.description}>{event.description}</p>
-              <p className={styles.eventDateTime}>
-                Date: {event.date} | Time: {event.time}
-              </p>
-              <a
-                href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                  event.title
-                )}&dates=${event.date.replace(
-                  /-/g,
-                  ""
-                )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.addToCalendarLink}
-              >
-                Add to Google Calendar
-              </a>
-              <button
-                className={styles.deleteBtn}
-                onClick={() => handleDelete(event.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </section>
     </div>
   );

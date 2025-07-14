@@ -8,6 +8,7 @@ import {
   Giving,
   Ministries,
   Sermons,
+  Admin,
 } from "./pages";
 import "./App.css";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/ministries" element={<Ministries />} />
           <Route path="/sermons" element={<Sermons />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
       <Footer />

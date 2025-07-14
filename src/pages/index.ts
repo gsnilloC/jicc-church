@@ -5,3 +5,4 @@ export { default as Contact } from "./Contact";
 export { default as Giving } from "./Giving";
 export { default as Ministries } from "./Ministries";
 export { default as Sermons } from "./Sermons";
+export { default as Admin } from "./Admin";

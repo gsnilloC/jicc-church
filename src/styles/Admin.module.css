@@ -1,0 +1,103 @@
+.admin {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #ffb347 0%, #ff6961 60%, #ffe259 100%);
+  padding-top: 6rem;
+}
+
+.adminTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #e4040c;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.eventForm {
+  background: #fafbfc;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 2.5rem 2rem 2rem 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.formLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+  box-sizing: border-box;
+  margin-bottom: 0.2rem;
+}
+
+.formTextarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.formButton {
+  width: 100%;
+  padding: 1rem;
+  background: #e4040c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.formButton:hover {
+  background: #b71c2a;
+}
+
+.formImageInput {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.formImagePreview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .admin {
+    padding-top: 2.5rem;
+  }
+  .adminTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .eventForm {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    max-width: 99vw;
+  }
+}

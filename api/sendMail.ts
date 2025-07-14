@@ -1,44 +1,43 @@
-const nodemailer = require("nodemailer");
-
 export const config = {
-  runtime: "nodejs", // nodemailer requires Node.js, not edge
+  runtime: "edge",
 };
 
-module.exports = async function handler(req, res) {
+export default async function handler(req: Request) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
+    });
   }
 
-  const body = await req.json();
-  const { to, subject, text, html } = body;
-  if (!to || !subject || (!text && !html)) {
-    return res.status(400).json({ error: "Missing required fields" });
-  }
+  const {
+    subject = "Hello from JICC Church",
+    html = "<strong>This is a test email from JICC Church via Resend.</strong>",
+  } = await req.json();
+  const from =
+    process.env.RESEND_FROM_EMAIL || "JICC Church <noreply@jicc.church>";
+  const to = "cgichohi2018@gmail.com";
 
-  // Use environment variables for Gmail credentials
-  const user = process.env.GMAIL_USERNAME;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-  if (!user || !pass) {
-    return res
-      .status(500)
-      .json({ error: "Missing Gmail credentials in environment" });
-  }
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user, pass },
-  });
-
-  try {
-    const info = await transporter.sendMail({
-      from: user,
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.RESEND_KEY}`,
+    },
+    body: JSON.stringify({
+      from,
       to,
       subject,
-      text,
       html,
+    }),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    return new Response(JSON.stringify({ error: data.error || data }), {
+      status: 500,
     });
-    return res.status(200).json({ message: "Email sent", info });
-  } catch (error: any) {
-    return res.status(500).json({ error: error.message });
   }
-};
+  return new Response(JSON.stringify({ message: "Email sent", data }), {
+    status: 200,
+  });
+}
