@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     text: '"This church has changed my life. The people are welcoming and the sermons are always uplifting."',
-    author: "Sarah",
+    author: "Charlie",
   },
   {
     text: '"A wonderful place to connect with God and others. I always leave feeling encouraged!"',
