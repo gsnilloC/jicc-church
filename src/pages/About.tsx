@@ -31,7 +31,7 @@ const coreBeliefs = [
 
 const staff = [
   {
-    name: "Peter Mburu",
+    name: "Peter Ngugi",
     title: "Lead Pastor",
     titleClass: styles.staffTitleLead,
     description: "Leading our congregation with wisdom since 2010.",
