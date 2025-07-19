@@ -55,7 +55,7 @@
     "@types/nodemailer": "^6.4.17"
   },
   "engines": {
-    "node": "18.x",
+    "node": "20.x",
     "npm": ">=9.0.0"
   }
 }
