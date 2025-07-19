@@ -38,7 +38,7 @@ const staff = [
     image: "https://randomuser.me/api/portraits/men/87.jpg",
   },
   {
-    name: "Pastor Hassan",
+    name: "Mary Mburu",
     title: "Associate Pastor",
     titleClass: styles.staffTitleAssociate,
     description: "Dedicated to nurturing the faith of our young members.",
@@ -227,8 +227,8 @@ const About: React.FC = () => {
                         person.titleClass === styles.staffTitleLead
                           ? "#e65c00"
                           : person.titleClass === styles.staffTitleAssociate
-                          ? "#e4040c"
-                          : "#e6a800",
+                            ? "#e4040c"
+                            : "#e6a800",
                     }}
                   >
                     {person.title}
