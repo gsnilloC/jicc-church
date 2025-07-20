@@ -76,7 +76,7 @@ const Sermons: React.FC = () => {
         {/* Mobile sermons card */}
         <div
           style={{
-            margin: "1.2rem 0",
+            margin: "1.2rem 0 3rem 0",
             background: "#fff",
             borderRadius: 8,
             padding: "2.9rem 1rem 1rem 1rem",

@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
           <h3 className={styles.footerSocialTitle}>Connect With Us</h3>
           <div className={styles.footerSocials}>
             <a
-              href="#"
+              href="https://www.facebook.com/jiccchurch/"
               className={styles.footerSocialLink}
               aria-label="Facebook"
             >
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com"
               className={styles.footerSocialLink}
               aria-label="Instagram"
             >
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/@tharamburuproductionsusa6211/featured"
               className={styles.footerSocialLink}
               aria-label="YouTube"
             >

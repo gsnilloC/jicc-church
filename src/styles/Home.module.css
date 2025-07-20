@@ -126,7 +126,7 @@
 }
 
 .serviceTimeTitle {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: #111827;
   text-align: center;
@@ -197,7 +197,7 @@
 }
 
 .testimonialText {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: #17505a;
   margin-bottom: 2rem;
@@ -226,7 +226,9 @@
   background: #cfd8dc;
   border: none;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.2s;
   outline: none;
   box-sizing: border-box;
   padding: 0;

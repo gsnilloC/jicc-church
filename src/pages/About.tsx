@@ -35,14 +35,14 @@ const staff = [
     title: "Lead Pastor",
     titleClass: styles.staffTitleLead,
     description: "Leading our congregation with wisdom since 2010.",
-    image: "https://randomuser.me/api/portraits/men/87.jpg",
+    image: "https://randomuser.me/api/portraits/men/36.jpg",
   },
   {
     name: "Mary Mburu",
     title: "Associate Pastor",
     titleClass: styles.staffTitleAssociate,
     description: "Dedicated to nurturing the faith of our young members.",
-    image: "https://randomuser.me/api/portraits/men/1.jpg",
+    image: "https://randomuser.me/api/portraits/women/23.jpg",
   },
   {
     name: "Grace Mburu",
