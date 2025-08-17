@@ -184,79 +184,188 @@
 .donationForm {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  min-width: 500px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+  color: #000;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #ef542e;
+  box-shadow: 0 0 0 3px rgba(239, 84, 46, 0.1);
 }
 
 .amountOptions {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.amountOptions button {
-  flex: 1;
-  padding: 0.7rem 0;
-  background: #f5f5f5;
-  border: none;
+.amountButton {
+  padding: 0.75rem 1.25rem;
+  background: #f8f9fa;
+  border: 2px solid #e1e5e9;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
-  color: #222;
+  color: #495057;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  min-width: 80px;
+}
+
+.amountButton:hover {
+  background: #e9ecef;
+  border-color: #ced4da;
 }
 
 .amountActive,
-.amountOptions button:active {
-  background: #ff3131;
+.amountButton:active {
+  background: #ef542e;
   color: #fff;
+  border-color: #ef542e;
+}
+
+.customAmountContainer {
+  margin-bottom: 0.5rem;
 }
 
 .customAmount {
   width: 100%;
-  padding: 0.7rem;
-  border: none;
+  padding: 0.875rem;
+  border: 2px solid #e1e5e9;
   border-radius: 8px;
-  background: #f5f5f5;
+  background: #fff;
   font-size: 1rem;
+  color: #000;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.customAmount:focus {
+  outline: none;
+  border-color: #ef542e;
+  box-shadow: 0 0 0 3px rgba(239, 84, 46, 0.1);
+}
+
+.errorText {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-weight: 500;
+}
+
+.cardElementContainer {
   margin-bottom: 0.5rem;
+}
+
+.stripeCardElement {
+  padding: 0.875rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  background: #fff;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.stripeCardElement:focus-within {
+  border-color: #ef542e;
+  box-shadow: 0 0 0 3px rgba(239, 84, 46, 0.1);
+}
+
+.stripeCardElement .StripeElement {
+  padding: 0.5rem;
 }
 
 .donationLabel {
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
-  font-weight: 500;
-  color: #222;
+  font-weight: 600;
+  color: #333;
 }
 
 .donationSelect,
 .donationInput {
   width: 100%;
-  padding: 0.7rem;
-  border: none;
+  padding: 0.875rem;
+  border: 2px solid #e1e5e9;
   border-radius: 8px;
-  background: #f5f5f5;
+  background: #fff;
   font-size: 1rem;
-  margin-top: 0.2rem;
+  color: #000;
+  margin-top: 0.25rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.donationSelect:focus,
+.donationInput:focus {
+  outline: none;
+  border-color: #ef542e;
+  box-shadow: 0 0 0 3px rgba(239, 84, 46, 0.1);
 }
 
 .donateButton {
   width: 100%;
-  padding: 1rem;
-  background: #ff3131;
+  padding: 1rem 1.5rem;
+  background: #ef542e;
   color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  margin-top: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  margin-top: 1rem;
 }
 
-.donateButton:hover {
-  background: #e02b2b;
+.donateButton:hover:not(:disabled) {
+  background: #d4451f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 84, 46, 0.3);
+}
+
+.donateButton:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .donationInfoSection {

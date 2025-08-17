@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footerLink}
               >
-                17902 Murphy Pkwy
+                790 French Camp Rd
               </a>
             </li>
             <li className={styles.footerListItem}>
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footerLink}
               >
-                Lathrop, CA 95330
+                Stockton, CA 95207
               </a>
             </li>
             <li className={styles.footerListItem}>Phone: (209)-922-4919</li>

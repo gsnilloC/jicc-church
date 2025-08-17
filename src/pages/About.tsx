@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "../styles/About.module.css";
 import aboutImg from "../assets/images/about.jpg";
+import mary from "../assets/images/mary_mburu.jpg";
+import peter from "../assets/images/pastor_mburu.jpg";
+import grace from "../assets/images/grace.jpg";
 
 const coreBeliefs = [
   {
@@ -35,21 +38,21 @@ const staff = [
     title: "Lead Pastor",
     titleClass: styles.staffTitleLead,
     description: "Leading our congregation with wisdom since 2010.",
-    image: "https://randomuser.me/api/portraits/men/36.jpg",
+    image: peter,
   },
   {
     name: "Mary Mburu",
     title: "Associate Pastor",
     titleClass: styles.staffTitleAssociate,
     description: "Dedicated to nurturing the faith of our young members.",
-    image: "https://randomuser.me/api/portraits/women/23.jpg",
+    image: mary,
   },
   {
     name: "Grace Mburu",
     title: "Worship Leader",
     titleClass: styles.staffTitleWorship,
     description: "Leading our worship ministry with passion and creativity.",
-    image: "https://randomuser.me/api/portraits/women/74.jpg",
+    image: grace,
   },
 ];
 
@@ -176,7 +179,7 @@ const About: React.FC = () => {
               color: "#ef542e",
             }}
           >
-            Our Staff
+            Our Leadership Team
           </h3>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {staff.map((person, idx) => (
@@ -196,8 +199,8 @@ const About: React.FC = () => {
                   src={person.image}
                   alt={person.name}
                   style={{
-                    width: 48,
-                    height: 48,
+                    width: 100,
+                    height: 100,
                     borderRadius: 8,
                     objectFit: "cover",
                     marginRight: 8,

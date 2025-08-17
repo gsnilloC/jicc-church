@@ -14,7 +14,7 @@ export default async function handler(req: Request) {
     html = "<strong>This is a test email from JICC Church via Resend.</strong>",
   } = await req.json();
   const from =
-    process.env.RESEND_FROM_EMAIL || "JICC Church <noreply@jicc.church>";
+    process.env.RESEND_FROM_EMAIL || "JICC Church <onboarding@resend.dev>";
   const to = "cgichohi2018@gmail.com";
 
   const res = await fetch("https://api.resend.com/emails", {

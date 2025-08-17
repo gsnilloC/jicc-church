@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../styles/Ministries.module.css";
 import ministriesImg from "../assets/images/ministries.jpg";
-import boyImg from "../assets/images/boy.jpg";
+import menImg from "../assets/images/ministry.jpg";
 import communityImg from "../assets/images/community.jpg";
 import crossImg from "../assets/images/cross.jpg";
 import eventsImg from "../assets/images/events.jpg";
 import sermonImg from "../assets/images/sermon.jpg";
 import bibleImg from "../assets/images/bible.jpg";
+import womenImg from "../assets/images/women.jpg";
 import { useNavigate } from "react-router-dom";
 
 const ministries = [
@@ -21,12 +22,12 @@ const ministries = [
     desc: "Periodic gatherings for middle and high school students.",
   },
   {
-    img: crossImg,
+    img: womenImg,
     title: "Women Ministry",
     desc: "Monthly gathering every 3rd Saturday of the month.",
   },
   {
-    img: boyImg,
+    img: menImg,
     title: "Men Ministry",
     desc: "Monthly gathering every 2nd Saturday of the month.",
   },

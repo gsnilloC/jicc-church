@@ -370,6 +370,8 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
             width: "100%",
             maxWidth: 420,
             margin: "0 auto",
+            padding: "0 1rem",
+            boxSizing: "border-box",
           }}
         >
           {loading ? (
@@ -390,65 +392,130 @@ const MobileHome: React.FC<{ navigate: ReturnType<typeof useNavigate> }> = ({
                 <div
                   key={event.id || idx}
                   style={{
-                    background: "#f7fafc",
-                    borderRadius: 8,
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                    padding: "0.7rem 0.7rem",
-                    marginBottom: 8,
+                    background: "#fff",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                    padding: "0",
+                    marginBottom: "1.2rem",
                     display: "flex",
                     flexDirection: "column",
-                    gap: 8,
                     width: "100%",
-                    maxWidth: 380,
+                    maxWidth: "380px",
+                    overflow: "hidden",
+                    border: "1px solid #f0f0f0",
                   }}
                 >
-                  <img
-                    src={
-                      event.image_url || require("../assets/images/events.jpg")
-                    }
-                    alt={event.title}
-                    style={{
-                      width: "100%",
-                      height: 120,
-                      objectFit: "cover",
-                      borderRadius: 8,
-                      marginBottom: 6,
-                    }}
-                  />
-                  <div
-                    style={{
-                      fontWeight: 700,
-                      fontSize: "1rem",
-                      color: "#111827",
-                    }}
-                  >
-                    {event.title}
+                  {/* Image Section */}
+                  <div style={{ position: "relative" }}>
+                    <img
+                      src={
+                        event.image_url ||
+                        require("../assets/images/events.jpg")
+                      }
+                      alt={event.title}
+                      style={{
+                        width: "100%",
+                        height: "80px",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                    {/* Category Badge */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "6px",
+                        left: "6px",
+                        background: "rgba(239, 84, 46, 0.9)",
+                        color: "#fff",
+                        padding: "2px 8px",
+                        borderRadius: "12px",
+                        fontSize: "0.65rem",
+                        fontWeight: "600",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px",
+                      }}
+                    >
+                      Event
+                    </div>
                   </div>
-                  <div style={{ fontSize: "0.9rem", color: "#374151" }}>
-                    {event.description}
+
+                  {/* Content Section */}
+                  <div style={{ padding: "0.8rem" }}>
+                    {/* Title */}
+                    <div
+                      style={{
+                        fontWeight: "700",
+                        fontSize: "1rem",
+                        color: "#111827",
+                        lineHeight: "1.2",
+                        marginBottom: "0.3rem",
+                      }}
+                    >
+                      {event.title}
+                    </div>
+
+                    {/* Description */}
+                    <div
+                      style={{
+                        fontSize: "0.8rem",
+                        color: "#6b7280",
+                        lineHeight: "1.3",
+                        marginBottom: "0.6rem",
+                      }}
+                    >
+                      {event.description}
+                    </div>
+
+                    {/* Date/Time */}
+                    <div
+                      style={{
+                        fontSize: "0.75rem",
+                        color: "#ef542e",
+                        fontWeight: "500",
+                        marginBottom: "0.8rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                      }}
+                    >
+                      <span style={{ fontSize: "0.8rem" }}>📅</span>
+                      {formatDate(event.date)}
+                      {event.time ? ` • ${formatTime(event.time)}` : ""}
+                    </div>
+
+                    {/* Action Button */}
+                    <a
+                      href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+                        event.title
+                      )}&dates=${event.date.replace(
+                        /-/g,
+                        ""
+                      )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        background: "#ef542e",
+                        color: "#fff",
+                        fontWeight: "600",
+                        fontSize: "0.8rem",
+                        padding: "0.6rem 0.8rem",
+                        borderRadius: "6px",
+                        textDecoration: "none",
+                        textAlign: "center",
+                        display: "block",
+                        transition: "background 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#d4451f";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "#ef542e";
+                      }}
+                    >
+                      Add to Google Calendar
+                    </a>
                   </div>
-                  <div style={{ fontSize: "0.85rem", color: "#ef542e" }}>
-                    Date: {formatDate(event.date)}
-                    {event.time ? ` | Time: ${formatTime(event.time)}` : ""}
-                  </div>
-                  <a
-                    href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                      event.title
-                    )}&dates=${event.date.replace(
-                      /-/g,
-                      ""
-                    )}T100000Z/${event.date.replace(/-/g, "")}T110000Z`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#e4040c",
-                      fontWeight: 600,
-                      fontSize: "0.9rem",
-                      marginTop: 4,
-                    }}
-                  >
-                    Add to Google Calendar
-                  </a>
                 </div>
               ))
           )}
