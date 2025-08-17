@@ -19,7 +19,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const presetAmounts = [25, 50, 100, 250, 500];
+  const presetAmounts = [10, 25, 50, 100, 250];
 
   // Load Stripe dynamically
   const loadStripe = async (publishableKey: string) => {

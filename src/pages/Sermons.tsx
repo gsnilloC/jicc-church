@@ -103,7 +103,10 @@ const Sermons: React.FC = () => {
             >
               Watch and listen to our latest sermons and teachings.
             </div>
-            <button
+            <a
+              href="https://www.youtube.com/@tharamburuproductionsusa6211/featured"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: "#e4040c",
                 color: "#fff",
@@ -114,16 +117,13 @@ const Sermons: React.FC = () => {
                 fontWeight: 600,
                 cursor: "pointer",
                 marginTop: 8,
+                textDecoration: "none",
+                display: "inline-block",
+                textAlign: "center",
               }}
-              onClick={() =>
-                window.open(
-                  "https://www.youtube.com/@tharamburuproductionsusa6211/featured",
-                  "_blank"
-                )
-              }
             >
               Watch on YouTube
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -144,17 +144,15 @@ const Sermons: React.FC = () => {
               Watch and listen to our latest sermons and teachings.
               <br />
             </div>
-            <button
+            <a
+              href="https://www.youtube.com/@tharamburuproductionsusa6211/featured"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.youtubeButton}
-              onClick={() =>
-                window.open(
-                  "https://www.youtube.com/@tharamburuproductionsusa6211/featured",
-                  "_blank"
-                )
-              }
+              style={{ textDecoration: "none" }}
             >
               Watch on YouTube
-            </button>
+            </a>
           </div>
         </div>
       </div>

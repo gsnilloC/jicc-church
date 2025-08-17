@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
               Contact Information
             </h2>
             <a
-              href="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95207"
+              href="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95206"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#111827", textDecoration: "none" }}
@@ -149,7 +149,7 @@ const Contact: React.FC = () => {
                 <span role="img" aria-label="location">
                   📍
                 </span>
-                790 French Camp Rd, Stockton, CA 95207
+                790 French Camp Rd, Stockton, CA 95206
               </p>
             </a>
             <p style={{ marginBottom: "1px", fontSize: "0.85rem" }}>
@@ -168,7 +168,7 @@ const Contact: React.FC = () => {
           <div style={{ borderRadius: 8, overflow: "hidden", height: 180 }}>
             <iframe
               title="JICC Location"
-              src="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95207&output=embed"
+              src="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95206&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, borderRadius: "10px" }}
@@ -225,7 +225,7 @@ const Contact: React.FC = () => {
             <div className={styles.mapWrapper}>
               <iframe
                 title="JICC Location"
-                src="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95207&output=embed"
+                src="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95206&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, borderRadius: "10px" }}
@@ -236,7 +236,7 @@ const Contact: React.FC = () => {
             <div className={styles.contactInfoBox}>
               <h2>Contact Information</h2>
               <a
-                href="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95207"
+                href="https://www.google.com/maps?q=790+French+Camp+Road,+Stockton,+CA+95206"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -244,7 +244,7 @@ const Contact: React.FC = () => {
                   <span role="img" aria-label="location">
                     📍
                   </span>
-                  790 French Camp Rd, Lathrop, CA 95330
+                  790 French Camp Rd, Stockton, CA 95206
                 </p>
               </a>
               <p>

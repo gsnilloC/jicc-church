@@ -300,19 +300,8 @@ const Giving: React.FC = () => {
                   fontSize: "0.85rem",
                 }}
               >
-                <span style={{ marginRight: "0.5rem" }}>📱</span>
-                Text "GIVE" to (555) 123-4567
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "0.5rem",
-                  fontSize: "0.85rem",
-                }}
-              >
                 <span style={{ marginRight: "0.5rem" }}>✉️</span>
-                Mail checks to: 123 Church Street, City, State 12345
+                Mail checks to: 790 French Camp Road, Stockton, CA 95206
               </div>
               <div
                 style={{

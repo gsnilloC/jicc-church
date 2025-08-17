@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footerLink}
               >
-                Stockton, CA 95207
+                Stockton, CA 95206
               </a>
             </li>
             <li className={styles.footerListItem}>Phone: (209)-922-4919</li>
