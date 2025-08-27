@@ -9,8 +9,16 @@ const serviceTimes = [
   { title: "Sunday Morning", text: "10:30 AM - Sunday Services" },
   { title: "Wednesday Evening", text: "6:00 PM - Prayer Night" },
   {
-    title: "Fire Fridays",
-    text: "7:00 PM - Worship Night on the last Friday of the month",
+    title: "Preteen/Teen/Youth Meeting",
+    text: "2 to 4 PM - Every Last Sunday of the month",
+  },
+  {
+    title: "Women's Meeting",
+    text: "10 to 12 PM - Every Third Saturday of the month",
+  },
+  {
+    title: "Men's Meeting",
+    text: "10 to 12 PM - Every Second Saturday of the month",
   },
 ];
 

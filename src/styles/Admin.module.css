@@ -88,6 +88,91 @@
   margin-bottom: 1rem;
 }
 
+/* Delete Event Section Styles */
+.deleteSection {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.deleteTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e4040c;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.deleteForm {
+  background: #fafbfc;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 2rem 2rem 1.5rem 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.deleteButton {
+  background: #dc3545 !important;
+}
+
+.deleteButton:hover {
+  background: #c82333 !important;
+}
+
+/* Cleanup Section Styles */
+.cleanupSection {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.cleanupButton {
+  background: #17a2b8 !important;
+  margin-bottom: 1rem;
+}
+
+.cleanupButton:hover {
+  background: #138496 !important;
+}
+
+.cleanupInfo {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Delete All Events Section Styles */
+.deleteAllSection {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+}
+
+.deleteAllButton {
+  background: #dc3545 !important;
+  margin-bottom: 1rem;
+}
+
+.deleteAllButton:hover {
+  background: #c82333 !important;
+}
+
+.deleteAllInfo {
+  font-size: 0.9rem;
+  color: #856404;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .admin {
     padding-top: 2.5rem;
@@ -99,5 +184,15 @@
   .eventForm {
     padding: 1.2rem 0.7rem 1rem 0.7rem;
     max-width: 99vw;
+  }
+  .deleteSection {
+    max-width: 99vw;
+  }
+  .deleteForm {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+  .deleteTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
   }
 }

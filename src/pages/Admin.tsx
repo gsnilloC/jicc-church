@@ -18,6 +18,8 @@ export default function Admin() {
   const [error, setError] = useState("");
 
   const [submitStatus, setSubmitStatus] = useState<string | null>(null);
+  const [deleteEventId, setDeleteEventId] = useState("");
+  const [deleteStatus, setDeleteStatus] = useState<string | null>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -67,6 +69,60 @@ export default function Admin() {
       }
     } catch (err) {
       setSubmitStatus("Failed to create event. Network error.");
+    }
+  };
+
+  const handleDeleteEvent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setDeleteStatus(null);
+
+    if (!deleteEventId.trim()) {
+      setDeleteStatus("Please enter an event ID to delete.");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/deleteEvent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: deleteEventId.trim() }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setDeleteStatus("Event deleted successfully!");
+        setDeleteEventId("");
+      } else {
+        setDeleteStatus(data.error || "Failed to delete event.");
+      }
+    } catch (err) {
+      setDeleteStatus("Failed to delete event. Network error.");
+    }
+  };
+
+  const handleCleanupPastEvents = async () => {
+    setDeleteStatus(null);
+
+    try {
+      const res = await fetch("/api/cleanupPastEvents", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setDeleteStatus(
+          `Past events cleaned up successfully! ${data.eventsRemoved} events removed.`
+        );
+      } else {
+        setDeleteStatus(data.error || "Failed to cleanup past events.");
+      }
+    } catch (err) {
+      setDeleteStatus("Failed to cleanup past events. Network error.");
     }
   };
 
@@ -228,6 +284,56 @@ export default function Admin() {
               Create Event
             </button>
           </form>
+
+          {/* Delete Event Section */}
+          <div className={styles.deleteSection}>
+            <h2 className={styles.deleteTitle}>Delete Event</h2>
+            <form className={styles.deleteForm} onSubmit={handleDeleteEvent}>
+              <label className={styles.formLabel} htmlFor="deleteEventId">
+                Event ID
+              </label>
+              <input
+                className={styles.formInput}
+                id="deleteEventId"
+                type="text"
+                placeholder="Enter event ID to delete"
+                value={deleteEventId}
+                onChange={(e) => setDeleteEventId(e.target.value)}
+                required
+              />
+              {deleteStatus && (
+                <div
+                  style={{
+                    margin: "1rem 0",
+                    color: deleteStatus.includes("success") ? "green" : "red",
+                  }}
+                >
+                  {deleteStatus}
+                </div>
+              )}
+              <button
+                className={`${styles.formButton} ${styles.deleteButton}`}
+                type="submit"
+              >
+                Delete Event
+              </button>
+            </form>
+
+            {/* Cleanup Past Events Button */}
+            <div className={styles.cleanupSection}>
+              <button
+                className={`${styles.formButton} ${styles.cleanupButton}`}
+                onClick={handleCleanupPastEvents}
+                type="button"
+              >
+                🧹 Cleanup Past Events
+              </button>
+              <p className={styles.cleanupInfo}>
+                This will automatically delete all events with dates that have
+                already passed.
+              </p>
+            </div>
+          </div>
         </>
       )}
     </div>
