@@ -146,7 +146,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
     <form onSubmit={handleSubmit} className={styles.donationForm}>
       {/* Name Input */}
       <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Full Name *</label>
+        <label className={styles.formLabel}>Full Name</label>
         <input
           className={styles.formInput}
           type="text"
@@ -159,7 +159,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
 
       {/* Amount Selection */}
       <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Donation Amount *</label>
+        <label className={styles.formLabel}>Donation Amount</label>
         <div className={styles.amountOptions}>
           {presetAmounts.map((amount) => (
             <button

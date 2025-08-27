@@ -296,12 +296,24 @@ const Giving: React.FC = () => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.3rem",
                   fontSize: "0.85rem",
                 }}
               >
                 <span style={{ marginRight: "0.5rem" }}>✉️</span>
-                Mail checks to: 790 French Camp Road, Stockton, CA 95206
+                Mail checks to:
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "0.5rem",
+                  fontSize: "0.85rem",
+                  paddingLeft: "1.5rem",
+                  marginTop: "0.2rem",
+                }}
+              >
+                790 French Camp Road, Stockton, CA 95206
               </div>
               <div
                 style={{
@@ -432,8 +444,8 @@ const Giving: React.FC = () => {
               <h2 className={styles.infoTitle}>Other Ways to Give</h2>
 
               <div className={`${styles.infoItem} ${styles.infoItemRow}`}>
-                <span className={styles.infoIcon}>✉️</span> Mail checks to: 123
-                Church Street, City, State 12345
+                <span className={styles.infoIcon}>✉️</span> Mail checks to: 790
+                French Camp Road, Stockton, CA 95206
               </div>
               <div className={`${styles.infoItem} ${styles.infoItemRow}`}>
                 <span className={styles.infoIcon}>🔄</span> Set up automatic
